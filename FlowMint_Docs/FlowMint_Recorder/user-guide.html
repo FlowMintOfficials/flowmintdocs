@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowMint Recorder — User Guide</title>
+  <meta name="description" content="Complete user guide for FlowMint Recorder: record browser tests, add assertions, export to Playwright, Python, Java, C#, Ruby. Data-driven tests and test suites." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000000;
+      --bg-mesh: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(20, 184, 166, 0.08) 0%, transparent 50%),
+                 radial-gradient(ellipse 60% 40% at 100% 50%, rgba(15, 118, 110, 0.05) 0%, transparent 50%),
+                 #000000;
+      --surface: rgba(18, 18, 18, 0.95);
+      --surface-solid: #0a0a0a;
+      --surface-elevated: rgba(30, 30, 30, 0.9);
+      --border: rgba(148, 163, 184, 0.1);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #34d1bf;
+      --accent-dim: rgba(52, 209, 191, 0.12);
+      --primary: #14b8a6;
+      --gradient: linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --radius-pill: 999px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+      --shadow-glow: 0 0 40px -10px rgba(20, 184, 166, 0.15);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg-mesh);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Site header — glass */
+    .site-header {
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .site-header a {
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .site-header a:hover { color: var(--accent); text-decoration: none; }
+    .logo {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(20, 184, 166, 0.25);
+    }
+    .logo svg { display: block; width: 100%; height: 100%; }
+    .site-header .brand {
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+    .site-header .brand span { color: var(--text-muted); font-weight: 500; }
+
+    /* Layout — wider, more space */
+    .layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 2.5rem;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      align-items: start;
+    }
+    @media (max-width: 960px) {
+      .layout { grid-template-columns: 1fr; padding: 1.5rem 1rem 3rem; }
+    }
+
+    /* TOC — minimal pill nav */
+    .toc-wrap {
+      position: sticky;
+      top: 5.5rem;
+    }
+    @media (max-width: 960px) {
+      .toc-wrap { position: static; margin-bottom: 1.5rem; }
+    }
+    .toc {
+      background: var(--surface);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.25rem;
+      box-shadow: var(--shadow);
+    }
+    .toc-title {
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin: 0 0 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc ul { list-style: none; padding: 0; margin: 0; }
+    .toc li { margin-bottom: 0.2rem; }
+    .toc a {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: color .2s, background .2s;
+    }
+    .toc a:hover {
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* Main content */
+    .main { min-width: 0; }
+
+    /* Sections — cards with left accent */
+    .section {
+      background: var(--surface);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.25rem 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .section::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--gradient);
+      border-radius: 4px 0 0 4px;
+    }
+    .section h2 {
+      font-size: 1.3125rem;
+      font-weight: 700;
+      margin: 0 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .section h2 .num {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(20, 184, 166, 0.35);
+    }
+    .section h3 {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      margin: 1.75rem 0 0.5rem;
+      color: var(--accent);
+    }
+    .section h3:first-of-type { margin-top: 0; }
+    .section p { margin: 0 0 1rem; }
+    .section ul, .section ol {
+      margin: 0 0 1rem;
+      padding-left: 1.5rem;
+    }
+    .section li { margin-bottom: 0.45rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Steps — modern cards */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: 1.25rem 0;
+    }
+    .step {
+      background: var(--surface-solid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-weight: 500;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .step:hover {
+      border-color: rgba(52, 209, 191, 0.3);
+      box-shadow: var(--shadow-glow);
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 0.8125rem;
+      font-weight: 700;
+    }
+    .step span:last-child { flex: 1; }
+
+    /* Pro badge */
+    .pro-badge {
+      display: inline-block;
+      background: var(--gradient);
+      color: #fff;
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-left: 0.35rem;
+    }
+
+    /* Callout */
+    .callout {
+      background: var(--accent-dim);
+      border: 1px solid rgba(52, 209, 191, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      font-size: 0.9375rem;
+    }
+    .callout strong { color: var(--accent); }
+
+    /* Code */
+    code {
+      background: var(--surface-elevated);
+      padding: 0.25rem 0.5rem;
+      border-radius: 8px;
+      font-size: 0.875em;
+      font-family: ui-monospace, monospace;
+      color: var(--accent);
+    }
+    pre {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: #e2e8f0;
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-sm);
+      overflow-x: auto;
+      font-size: 0.8125rem;
+      margin: 1.25rem 0;
+    }
+    pre code { background: none; padding: 0; color: inherit; }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0;
+      font-size: 0.9375rem;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    th, td {
+      border-bottom: 1px solid var(--border);
+      padding: 0.875rem 1.25rem;
+      text-align: left;
+    }
+    tr:last-child td { border-bottom: none; }
+    th {
+      background: var(--surface-elevated);
+      font-weight: 600;
+      color: var(--text);
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    td { color: var(--text-muted); }
+    td strong { color: var(--text); }
+
+    .dev-note {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: var(--surface-solid);
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      border-left: 4px solid var(--primary);
+    }
+    .dev-note strong { color: var(--text); }
+
+    /* Site footer */
+    .site-footer {
+      margin-top: 3rem;
+      padding: 2rem 0;
+      background: #000000;
+      border-top: 1px solid var(--border);
+    }
+    .site-footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .site-footer .logo { width: 32px; height: 32px; border-radius: 8px; }
+    .site-footer-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .site-footer-copy {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .site-footer-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.875rem;
+    }
+    .site-footer-links a { color: var(--text-muted); }
+    .site-footer-links a:hover { color: var(--accent); }
+    footer.main-footer {
+      grid-column: 1 / -1;
+      margin-top: 1.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    @media print {
+      body { background: #fff; color: #111; }
+      .site-header { background: #f1f5f9; border-color: #e2e8f0; backdrop-filter: none; }
+      .site-footer { background: #f1f5f9; border-color: #e2e8f0; }
+      .layout { grid-template-columns: 1fr; }
+      .section { background: #f8fafc; border-color: #e2e8f0; backdrop-filter: none; }
+      .section::before { display: none; }
+      .toc { background: #f8fafc; border-color: #e2e8f0; backdrop-filter: none; }
+      .toc a { color: #475569; }
+      .step { background: #f1f5f9; }
+      code { background: #e2e8f0; color: #0f766e; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <a href="index.html" aria-label="FlowMint Recorder home">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <rect width="128" height="128" rx="24" fill="url(#logo-grad)"/>
+            <circle cx="64" cy="64" r="20" fill="white"/>
+            <circle cx="64" cy="64" r="32" fill="none" stroke="white" stroke-width="4" opacity="0.9"/>
+            <line x1="64" y1="16" x2="64" y2="32" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+            <line x1="64" y1="96" x2="64" y2="112" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+            <line x1="16" y1="64" x2="32" y2="64" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+            <line x1="96" y1="64" x2="112" y2="64" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+            <defs>
+              <linearGradient id="logo-grad" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0f766e"/>
+                <stop offset="0.5" stop-color="#0d9488"/>
+                <stop offset="1" stop-color="#14b8a6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="brand">FlowMint Recorder <span>— User Guide</span></span>
+      </a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc-wrap" aria-label="Table of contents">
+      <div class="toc">
+        <div class="toc-title">Contents</div>
+        <ul>
+          <li><a href="#intro">1. Introduction</a></li>
+          <li><a href="#install">2. Installation</a></li>
+          <li><a href="#quick-start">3. Quick start</a></li>
+          <li><a href="#side-panel">4. Side panel tabs</a></li>
+          <li><a href="#recording">5. Recording</a></li>
+          <li><a href="#actions">6. Action list</a></li>
+          <li><a href="#assertions">7. Assertions</a></li>
+          <li><a href="#data-driven">8. Data-driven</a></li>
+          <li><a href="#export">9. Export</a></li>
+          <li><a href="#suites">10. Test Suites</a></li>
+          <li><a href="#playback">11. Playback &amp; reports</a></li>
+          <li><a href="#settings">12. Settings</a></li>
+          <li><a href="#pro">13. Pro features</a></li>
+          <li><a href="#tips">14. Tips</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="main">
+      <section class="section" id="intro">
+        <h2><span class="num">1</span> Introduction</h2>
+        <p>FlowMint Recorder is a browser extension that lets you <strong>record</strong> clicks, typing, navigation, and more, <strong>add assertions</strong> (text, visibility, URL, etc.), and <strong>export</strong> tests to <strong>JavaScript (Playwright)</strong>, <strong>Python</strong>, <strong>Java</strong>, <strong>C#</strong>, or <strong>Ruby</strong>. You can run tests with <strong>data-driven</strong> CSV/JSON and organize them in <strong>Test Suites</strong>.</p>
+        <p>All data is stored locally in your browser; no external servers or analytics.</p>
+      </section>
+
+      <section class="section" id="install">
+        <h2><span class="num">2</span> Installation</h2>
+        <p>Install FlowMint Recorder from the browser store — no build or command line required.</p>
+        <ol>
+          <li>Open the <strong>Chrome Web Store</strong> (or <strong>Edge Add-ons</strong> if you use Microsoft Edge).</li>
+          <li>Search for <strong>FlowMint Recorder</strong> or use the direct link from the FlowMint website.</li>
+          <li>Click <strong>Add to Chrome</strong> (or <strong>Get</strong> in Edge) and confirm.</li>
+          <li>Pin the extension to the toolbar: click the puzzle-piece icon in the browser bar, then pin FlowMint Recorder for quick access.</li>
+        </ol>
+        <p>To use it: click the FlowMint icon. The side panel opens with the <strong>Actions</strong> tab. From there you can start recording, switch to other tabs (Variables &amp; Data, Export, Suites, Settings), and run or export tests.</p>
+        <div class="dev-note">
+          <strong>Developers / testers:</strong> If you’re building from source, run <code>npm run build</code>, then in <code>chrome://extensions/</code> turn on Developer mode and use <strong>Load unpacked</strong> to select the <code>dist</code> folder. End users don’t need this — they install from the store.
+        </div>
+      </section>
+
+      <section class="section" id="quick-start">
+        <h2><span class="num">3</span> Quick start (5 steps)</h2>
+        <div class="steps">
+          <div class="step"><span class="step-num">1</span><span>Open a website you want to test (e.g. <code>https://google.com</code>) in the same browser.</span></div>
+          <div class="step"><span class="step-num">2</span><span>Click the extension icon to open the side panel, then click <strong>Start Recording</strong>. A small <strong>floating toolbar</strong> appears on the page (bottom-right) while recording.</span></div>
+          <div class="step"><span class="step-num">3</span><span>Interact with the page: click, type, select. Use the toolbar to <strong>Pause</strong>, <strong>Stop</strong>, add <strong>Wait</strong> (1s / 2s / 5s), or <strong>Assert URL</strong> <span class="pro-badge">Pro</span>.</span></div>
+          <div class="step"><span class="step-num">4</span><span>Click <strong>Stop</strong> on the toolbar. Your steps appear in the <strong>Actions</strong> tab.</span></div>
+          <div class="step"><span class="step-num">5</span><span>Go to the <strong>Export</strong> tab, choose a language (e.g. JavaScript / Playwright), then <strong>Copy code</strong> or <strong>Download</strong> to get the test script.</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="side-panel">
+        <h2><span class="num">4</span> Side panel tabs</h2>
+        <p>Use the sidebar on the left of the panel to switch between:</p>
+        <table>
+          <thead>
+            <tr><th>Tab</th><th>Purpose</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Actions</strong></td><td>Test name, Start/Pause/Stop, Run test (Pro), list of steps. Add assertions, extract values, reorder/duplicate (Pro).</td></tr>
+            <tr><td><strong>Variables &amp; Data</strong></td><td>Declare variables, CSV/JSON data source, run test once per row (Pro).</td></tr>
+            <tr><td><strong>Export</strong></td><td>Language (JS, Python, Java, C#, Ruby), conditional logic, copy/download. Import test (Pro).</td></tr>
+            <tr><td><strong>Suites</strong></td><td>Save tests, create suites (setup → tests → teardown), run suite, search tests, download report (Pro).</td></tr>
+            <tr><td><strong>Settings</strong></td><td>Recording, selectors, export defaults, theme (light/dark/system), advanced.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section" id="recording">
+        <h2><span class="num">5</span> Recording</h2>
+        <h3>Test name</h3>
+        <p>Set a <strong>Test name</strong> in the Actions tab (before or after starting). It’s used when you save, export, or download the playback report.</p>
+        <h3>Start / Pause / Stop</h3>
+        <ul>
+          <li><strong>Start Recording</strong> — Begins capturing. The <strong>floating toolbar</strong> appears on the page (draggable, bottom-right).</li>
+          <li><strong>Pause</strong> / <strong>Resume</strong> — Temporarily stop or continue capturing.</li>
+          <li><strong>Stop</strong> — End the session. Reopen the panel to see the full action list.</li>
+        </ul>
+        <h3>Floating toolbar</h3>
+        <p>While recording: <strong>Rec</strong> / <strong>Paused</strong> status, <strong>Pause</strong>, <strong>Stop</strong>, <strong>Wait 1s / 2s / 5s</strong> <span class="pro-badge">Pro</span>, <strong>Assert URL</strong> <span class="pro-badge">Pro</span>. Drag the toolbar by its background to move it.</p>
+        <h3>What gets recorded</h3>
+        <p>Clicks, typing, selects, navigation, hover (if enabled), scroll (Pro), form submit. Selectors prefer <code>id</code>, <code>data-testid</code>, ARIA, then XPath/CSS — configurable in Settings.</p>
+      </section>
+
+      <section class="section" id="actions">
+        <h2><span class="num">6</span> Action list &amp; step options</h2>
+        <p>After recording, each step appears in the Actions tab. You can:</p>
+        <ul>
+          <li><strong>Expand / collapse</strong> — See selector and details. Use Collapse all / Expand all at the top.</li>
+          <li><strong>Add assertion</strong> <span class="pro-badge">Pro</span> — Add text, visibility, attribute, count, URL, or value assertion after a step.</li>
+          <li><strong>Extract value to variable</strong> — Capture text, attribute, or input value for data-driven runs.</li>
+          <li><strong>Move up / down</strong>, <strong>Duplicate</strong> <span class="pro-badge">Pro</span></li>
+          <li><strong>Run from step</strong>, <strong>Run single step</strong>, <strong>Edit selector</strong> <span class="pro-badge">Pro</span></li>
+          <li><strong>Delete</strong> — Remove the step (with confirmation).</li>
+        </ul>
+        <p><strong>Export steps as JSON</strong> (top of list) <span class="pro-badge">Pro</span> — Download the test as JSON; re-import from the Export tab.</p>
+      </section>
+
+      <section class="section" id="assertions">
+        <h2><span class="num">7</span> Assertions</h2>
+        <p>Add assertions from the Actions tab (next to a step) or from the floating toolbar (Assert URL only).</p>
+        <table>
+          <thead>
+            <tr><th>Type</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Text</strong></td><td>Element text equals, contains, or matches a value.</td></tr>
+            <tr><td><strong>Visibility</strong></td><td>Element is visible or hidden.</td></tr>
+            <tr><td><strong>Attribute</strong></td><td>Attribute (e.g. <code>href</code>, <code>disabled</code>) equals or contains a value.</td></tr>
+            <tr><td><strong>Count</strong></td><td>Number of elements matching the selector.</td></tr>
+            <tr><td><strong>URL</strong></td><td>Current page URL equals or contains a value (toolbar or panel).</td></tr>
+            <tr><td><strong>Value</strong></td><td>Input value equals or contains a value.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section" id="data-driven">
+        <h2><span class="num">8</span> Data-driven tests</h2>
+        <p>The <strong>Variables &amp; Data</strong> tab (Pro) lets you run the same test with different data (e.g. multiple logins).</p>
+        <h3>Variables</h3>
+        <p>Declare names (e.g. <code>username</code>, <code>password</code>). Use <strong>Extract value to variable</strong> to capture from the page, or <code>{{variableName}}</code> in type/navigate steps.</p>
+        <h3>Data source</h3>
+        <p>Paste <strong>CSV</strong> (first row = headers) or <strong>JSON</strong> (array of objects). Example:</p>
+        <pre><code>username,password,role
+alice,secret123,admin
+bob,pass456,user</code></pre>
+        <h3>Run with data</h3>
+        <p>Click <strong>Run with data</strong>. The test runs once per row; variables are replaced. You can import a CSV/JSON file via the file picker.</p>
+      </section>
+
+      <section class="section" id="export">
+        <h2><span class="num">9</span> Export</h2>
+        <p>The <strong>Export</strong> tab generates code from your actions, assertions, and conditional blocks.</p>
+        <ul>
+          <li><strong>Languages:</strong> JavaScript (Playwright), Python, Java, C#, Ruby (Selenium). Some may be Pro.</li>
+          <li><strong>Copy code</strong> / <strong>Download</strong> — Default language and indent in Settings.</li>
+          <li><strong>Conditional logic</strong> — Wrap step ranges in if/for/while/switch (export-only; doesn’t change playback).</li>
+          <li><strong>Import test</strong> <span class="pro-badge">Pro</span> — Load a JSON test (same format as Export steps as JSON).</li>
+          <li><strong>AI Export</strong> (Pro, optional) — If configured, Generate with AI sends actions to your endpoint and shows returned code.</li>
+        </ul>
+      </section>
+
+      <section class="section" id="suites">
+        <h2><span class="num">10</span> Test Suites</h2>
+        <p>The <strong>Suites</strong> tab (Pro) is where you save tests and run them in groups.</p>
+        <h3>Saved tests</h3>
+        <p><strong>Search</strong> by name/description, <strong>Load</strong>, <strong>Run</strong>, <strong>Rename</strong>, <strong>Export as JSON</strong>, <strong>Delete</strong>. After a run: pass/fail counts, expand step details, <strong>Download report</strong> (HTML with screenshots).</p>
+        <h3>Suites</h3>
+        <p><strong>Create suite</strong> — Name it, add tests in order, optionally set <strong>Setup</strong> (run once before) and <strong>Teardown</strong> (run once after). <strong>Run suite</strong> runs setup → tests → teardown.</p>
+      </section>
+
+      <section class="section" id="playback">
+        <h2><span class="num">11</span> Playback &amp; reports</h2>
+        <p><strong>Run test</strong> <span class="pro-badge">Pro</span> runs the current (or selected) test in a new tab. Progress shows in the panel. <strong>Run from step</strong> / <strong>Run single step</strong> <span class="pro-badge">Pro</span> start at a specific step or run only one step.</p>
+        <p><strong>Download report</strong> creates a self-contained HTML file: test name, date, summary (total/passed/failed), and each step with status, description, error (if any), and screenshot. Open or share the file in any browser.</p>
+      </section>
+
+      <section class="section" id="settings">
+        <h2><span class="num">12</span> Settings</h2>
+        <p><strong>Recording</strong> — Auto-save, notifications, hovers, keystrokes, smart waits, pause on blur.</p>
+        <p><strong>Selectors</strong> — Prefer data-testid/ARIA, XPath, short selectors, locator order (id → xpath → css).</p>
+        <p><strong>Export</strong> — Default language, indent size, comments, async.</p>
+        <p><strong>Appearance</strong> — Theme: Light, Dark, or System.</p>
+        <p><strong>Advanced</strong> — Developer mode, debug logs. <strong>Pro dev override</strong> unlocks Pro features for local testing (don’t use in production).</p>
+        <p><strong>Export / Import / Reset</strong> — Save or load settings as JSON; reset to defaults. Settings can be overridden via <code>extension-config.json</code> for deployers.</p>
+      </section>
+
+      <section class="section" id="pro">
+        <h2><span class="num">13</span> Pro features</h2>
+        <p>Typically gated as Pro: Run test, Run from step, Run single step; Reorder/Duplicate steps; Test Suites (save, load, suite, setup/teardown); Record assertions, Insert wait, Record scroll; Edit selector; Variables &amp; Data; Import test, Export as JSON; some export languages; AI Export when configured.</p>
+        <p>Enable <strong>Pro dev override</strong> in Settings → Advanced to unlock Pro locally for development or testing.</p>
+      </section>
+
+      <section class="section" id="tips">
+        <h2><span class="num">14</span> Tips &amp; troubleshooting</h2>
+        <ul>
+          <li><strong>“No valid webpage”</strong> — Open a normal web page (https) in the tab you want to record. Chrome/extension pages can’t be recorded.</li>
+          <li><strong>“Receiving end does not exist”</strong> — Refresh the page and try again so the content script loads.</li>
+          <li><strong>Selectors break</strong> — Prefer <code>data-testid</code> or stable IDs. Use Edit selector (Pro) to fix a step.</li>
+          <li><strong>Run test fails immediately</strong> — Ensure the tab is on the correct start URL. Try Run from step from the first action.</li>
+          <li><strong>Data-driven: variables not replaced</strong> — Declare variable names and use <code>{{name}}</code> in steps; names must match data columns/keys.</li>
+          <li><strong>Export empty or errors</strong> — Ensure at least one action; check conditional block step ranges.</li>
+        </ul>
+        <div class="callout">
+          <strong>Stable selectors:</strong> Use <code>data-testid</code> or <code>id</code> on important elements. Enable “Prefer data-testid” and “Prefer ARIA labels” in Settings → Selectors.
+        </div>
+      </section>
+
+      <footer class="main-footer">
+        <p>FlowMint Recorder — User Guide. Data is stored locally; no analytics. For configuration and deployment, see CONFIG.md and the project README.</p>
+      </footer>
+    </main>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer-inner">
+      <div class="site-footer-left">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <rect width="128" height="128" rx="24" fill="url(#logo-grad-f)"/>
+            <circle cx="64" cy="64" r="20" fill="white"/>
+            <circle cx="64" cy="64" r="32" fill="none" stroke="white" stroke-width="4" opacity="0.9"/>
+            <line x1="64" y1="16" x2="64" y2="32" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+            <line x1="64" y1="96" x2="64" y2="112" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+            <line x1="16" y1="64" x2="32" y2="64" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+            <line x1="96" y1="64" x2="112" y2="64" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+            <defs>
+              <linearGradient id="logo-grad-f" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0f766e"/>
+                <stop offset="0.5" stop-color="#0d9488"/>
+                <stop offset="1" stop-color="#14b8a6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <p class="site-footer-copy">© <span id="year">2025</span> FlowMint. All rights reserved.</p>
+      </div>
+      <nav class="site-footer-links" aria-label="Footer links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
