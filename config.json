@@ -1,0 +1,76 @@
+{
+  "contact": {
+    "generalEmail": "general@flowmint.com",
+    "privacyEmail": "privacyterms@flowmint.com"
+  },
+  "payment": {
+    "upiId": "your-upi@paytm",
+    "supportEmail": "support@flowmint.com",
+    "mailSubject": "FlowMint Pro - Payment Completed - License Request",
+    "mailBody": "Hi FlowMint team,\n\nI have completed the payment for FlowMint Pro.\n\nPlease find my payment screenshot attached to this email.\n\nDetails:\n- Plan chosen: (Weekly Pro / Monthly Pro / Quarterly Pro / Yearly Pro — please specify)\n- Amount paid: (e.g. ₹99, ₹299, ₹799 or ₹2,499)\n- Date of payment: (please fill)\n\nPlease verify and issue my Pro license.\n\nThank you."
+  },
+  "plans": [
+    {
+      "name": "Weekly Pro",
+      "price": "99",
+      "period": "week",
+      "description": "Try Pro for a week. Full access, no commitment.",
+      "features": [
+        "All Pro features unlocked",
+        "7-day trial",
+        "Upgrade anytime"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Monthly Pro",
+      "price": "299",
+      "period": "month",
+      "description": "Full access to Pro features for one month. Renew anytime.",
+      "features": [
+        "All Pro features unlocked",
+        "Priority support",
+        "Cancel anytime"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Quarterly Pro",
+      "price": "799",
+      "period": "quarter",
+      "description": "3 months of Pro. Save compared to paying monthly.",
+      "features": [
+        "All Pro features unlocked",
+        "Priority support",
+        "1 month free"
+      ],
+      "featured": false
+    },
+    {
+      "name": "Yearly Pro",
+      "price": "2,499",
+      "period": "year",
+      "description": "Best value. Save over 30% compared to monthly.",
+      "features": [
+        "All Pro features unlocked",
+        "Priority support",
+        "2 months free"
+      ],
+      "featured": true
+    }
+  ],
+  "proFeaturesList": [
+    "playback",
+    "editSteps",
+    "testSuites",
+    "recordAssertions",
+    "insertWait",
+    "recordScroll",
+    "runFromStep",
+    "editSelector",
+    "aiExport",
+    "importTest",
+    "exportTestJson",
+    "exportProLanguages"
+  ]
+}

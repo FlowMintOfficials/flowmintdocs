@@ -3,21 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlowMint — Developer tools for test automation</title>
-  <meta name="description" content="FlowMint builds developer tools for test automation. FlowMint Recorder: record browser tests, export to Playwright, Python, Java, C#, Ruby. FlowMint Test Evidence: record with screenshots, export PDF, HTML, JSON for QA." />
-  <meta name="keywords" content="FlowMint, FlowMint Recorder, FlowMint Test Evidence, record browser tests, export Playwright, test evidence, screenshots, export PDF, QA documentation, test automation extension, Playwright Codegen alternative, Selenium IDE alternative" />
-  <meta name="author" content="FlowMint" />
+  <title>Support &amp; Help — FlowMint</title>
+  <meta name="description" content="FlowMint support: user guides for Recorder and Test Evidence, upgrade to Pro, FAQ, and contact." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="FlowMint — Developer tools for test automation" />
-  <meta property="og:description" content="FlowMint Recorder: record browser tests, export to Playwright, Python, Java, C#, Ruby. FlowMint Test Evidence: record with screenshots, export PDF, HTML, JSON." />
-  <meta property="og:image" content="https://raw.githubusercontent.com/FlowMint/Record_Project/main/public/icons/icon128.png" />
-  <meta property="og:url" content="https://YOUR-USERNAME.github.io/YOUR-REPO/" />
-  <meta property="og:locale" content="en_US" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="FlowMint — Developer tools" />
-  <meta name="twitter:description" content="FlowMint Recorder: record & export browser tests. FlowMint Test Evidence: record with screenshots, export PDF, HTML, JSON." />
-  <link rel="canonical" href="https://YOUR-USERNAME.github.io/YOUR-REPO/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -126,7 +114,7 @@
 
     .hero {
       text-align: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
       padding: 1rem 0;
     }
     .hero h1 {
@@ -141,7 +129,7 @@
       font-size: 1.25rem;
       color: var(--text-muted);
       margin: 0;
-      max-width: 480px;
+      max-width: 520px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -162,20 +150,16 @@
       margin: 0 0 2rem;
     }
 
-    /* Products grid */
-    .products {
-      margin-bottom: 4rem;
-    }
-    .products-grid {
+    .support-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
     @media (max-width: 768px) {
-      .products-grid { grid-template-columns: 1fr; }
+      .support-grid { grid-template-columns: 1fr; }
     }
 
-    .product-card {
+    .support-card {
       background: var(--surface);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -186,18 +170,18 @@
       flex-direction: column;
       transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
     }
-    .product-card:hover {
+    .support-card:hover {
       border-color: rgba(52, 209, 191, 0.25);
       box-shadow: var(--shadow-card), var(--shadow-glow);
       transform: translateY(-2px);
     }
-    .product-card-header {
+    .support-card-header {
       display: flex;
       align-items: flex-start;
       gap: 1rem;
       margin-bottom: 1.25rem;
     }
-    .product-icon {
+    .support-icon {
       width: 48px;
       height: 48px;
       flex-shrink: 0;
@@ -209,70 +193,32 @@
       justify-content: center;
       box-shadow: 0 4px 16px rgba(20, 184, 166, 0.3);
     }
-    .product-icon svg { width: 28px; height: 28px; }
-    .product-card h3 {
+    .support-icon svg { width: 28px; height: 28px; color: #fff; }
+    .support-card h3 {
       font-size: 1.25rem;
       font-weight: 700;
       margin: 0 0 0.25rem;
       color: var(--text);
-      letter-spacing: -0.02em;
     }
-    .product-card .product-tagline {
+    .support-card .support-tagline {
       font-size: 0.875rem;
       color: var(--text-muted);
       margin: 0;
     }
-    .product-card .product-desc {
+    .support-card p {
       font-size: 0.9375rem;
       color: var(--text-muted);
       margin: 0 0 1.25rem;
       flex: 1;
     }
-    .product-card .product-features {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.25rem;
-      font-size: 0.875rem;
-      color: var(--text-muted);
-    }
-    .product-card .product-features li {
-      padding: 0.35rem 0 0.35rem 1.25rem;
-      position: relative;
-    }
-    .product-card .product-features li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.6em;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.8;
-    }
-    .product-card .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.25rem;
-    }
-    .product-card .badge {
-      display: inline-block;
-      background: var(--surface-solid);
-      color: var(--text-muted);
-      padding: 0.3rem 0.65rem;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      border: 1px solid var(--border);
-    }
-    .product-card .cta-row {
+    .support-card .cta-row {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 0.75rem;
       margin-top: auto;
     }
-    .product-card .cta {
+    .support-card .cta {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -285,36 +231,44 @@
       text-decoration: none;
       transition: opacity 0.2s, transform 0.2s;
     }
-    .product-card .cta:hover { opacity: 0.95; transform: translateY(-1px); text-decoration: none; color: #fff; }
-    .product-card .cta.secondary {
+    .support-card .cta:hover { opacity: 0.95; transform: translateY(-1px); text-decoration: none; color: #fff; }
+    .support-card .cta.secondary {
       background: transparent;
       color: var(--accent);
       border: 1px solid rgba(52, 209, 191, 0.4);
     }
-    .product-card .cta.secondary:hover { background: var(--accent-dim); color: var(--accent); }
+    .support-card .cta.secondary:hover { background: var(--accent-dim); color: var(--accent); }
 
-    /* About & Contact sections */
-    .about, .contact-section {
+    .links-section {
       background: var(--surface);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 2.25rem 2rem;
-      margin-bottom: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
       box-shadow: var(--shadow);
     }
-    .about h2, .contact-section h2 {
+    .links-section h2 {
       font-size: 1.25rem;
       font-weight: 700;
       margin: 0 0 1rem;
       color: var(--text);
-      letter-spacing: -0.02em;
     }
-    .about p, .contact-section p { margin: 0 0 1rem; color: var(--text-muted); }
-    .about p:last-child, .contact-section p:last-child { margin-bottom: 0; }
-    .contact-section ul { margin: 0; padding-left: 1.5rem; color: var(--text-muted); }
-    .contact-section li { margin-bottom: 0.5rem; }
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .links-section a {
+      display: block;
+      color: var(--accent);
+      font-size: 0.9375rem;
+      padding: 0.5rem 0;
+      text-decoration: none;
+    }
+    .links-section a:hover { text-decoration: underline; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
@@ -337,33 +291,10 @@
     .site-footer .logo { width: 32px; height: 32px; border-radius: 8px; }
     .site-footer-left { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
     .site-footer-copy { font-size: 0.8125rem; color: var(--text-muted); margin: 0; }
-    .site-footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 0 0.75rem;
-      font-size: 0.8125rem;
-    }
-    .site-footer-links a {
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
+    .site-footer-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 0 0.75rem; font-size: 0.8125rem; }
+    .site-footer-links a { color: var(--text-muted); white-space: nowrap; }
     .site-footer-links a:hover { color: var(--accent); }
-    .site-footer-links .sep {
-      color: var(--text-muted);
-      opacity: 0.5;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    @media print {
-      body { background: #fff; color: #111; }
-      .site-header { background: #f1f5f9; border-color: #e2e8f0; backdrop-filter: none; }
-      .site-footer { background: #f1f5f9; border-color: #e2e8f0; }
-      .product-card, .about, .contact-section { background: #f8fafc; border-color: #e2e8f0; backdrop-filter: none; }
-      .product-card .badge { background: #f1f5f9; color: #475569; border-color: #e2e8f0; }
-    }
+    .site-footer-links .sep { color: var(--text-muted); opacity: 0.5; user-select: none; pointer-events: none; }
   </style>
 </head>
 <body>
@@ -372,7 +303,7 @@
       <a href="index.html" aria-label="FlowMint home">
         <span class="logo" aria-hidden="true">
           <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" fill="none">
-            <rect width="128" height="128" rx="24" fill="url(#logo-grad-i)"/>
+            <rect width="128" height="128" rx="24" fill="url(#logo-grad-s)"/>
             <circle cx="64" cy="64" r="20" fill="white"/>
             <circle cx="64" cy="64" r="32" fill="none" stroke="white" stroke-width="4" opacity="0.9"/>
             <line x1="64" y1="16" x2="64" y2="32" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
@@ -380,7 +311,7 @@
             <line x1="16" y1="64" x2="32" y2="64" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
             <line x1="96" y1="64" x2="112" y2="64" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
             <defs>
-              <linearGradient id="logo-grad-i" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+              <linearGradient id="logo-grad-s" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
                 <stop stop-color="#0f766e"/>
                 <stop offset="0.5" stop-color="#0d9488"/>
                 <stop offset="1" stop-color="#14b8a6"/>
@@ -395,17 +326,17 @@
 
   <div class="page">
     <div class="hero">
-      <h1>FlowMint</h1>
-      <p class="tagline">Developer tools for test automation and quality</p>
+      <h1>Support &amp; Help</h1>
+      <p class="tagline">User guides, upgrade to Pro, FAQ, and contact — everything in one place.</p>
     </div>
 
-    <section class="products" id="products">
-      <p class="section-heading">Products</p>
-      <h2 class="section-title">Browser extensions for recording and evidence</h2>
-      <div class="products-grid">
-        <article class="product-card">
-          <div class="product-card-header">
-            <span class="product-icon" aria-hidden="true">
+    <section class="support-section" id="guides">
+      <p class="section-heading">Documentation</p>
+      <h2 class="section-title">Product guides</h2>
+      <div class="support-grid">
+        <article class="support-card">
+          <div class="support-card-header">
+            <span class="support-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"/>
                 <circle cx="12" cy="12" r="3"/>
@@ -417,30 +348,18 @@
             </span>
             <div>
               <h3>FlowMint Recorder</h3>
-              <p class="product-tagline">Record tests, export to code</p>
+              <p class="support-tagline">Record tests, export to code</p>
             </div>
           </div>
-          <p class="product-desc">Record browser tests, add assertions, and export to Playwright (JavaScript), Python, Java, C#, or Ruby. Data-driven tests, test suites, and multi-language export in one extension.</p>
-          <ul class="product-features">
-            <li>Record clicks, typing, navigation, selects, hover, scroll</li>
-            <li>Assertions: text, visibility, URL, attribute, count</li>
-            <li>Export to JS, Python, Java, C#, Ruby</li>
-            <li>Data-driven with CSV/JSON; test suites</li>
-          </ul>
-          <div class="badges">
-            <span class="badge">Playwright</span>
-            <span class="badge">Selenium</span>
-            <span class="badge">Codegen</span>
-          </div>
+          <p>Step-by-step guide: recording, assertions, export to Playwright, Python, Java, C#, Ruby, data-driven tests, and test suites.</p>
           <div class="cta-row">
-            <a href="#" class="cta">Get Recorder</a>
-            <a href="FlowMint_Recorder/user-guide.html" class="cta secondary">User Guide</a>
+            <a href="FlowMint_Recorder/user-guide.html" class="cta">Open User Guide</a>
           </div>
         </article>
 
-        <article class="product-card">
-          <div class="product-card-header">
-            <span class="product-icon" aria-hidden="true">
+        <article class="support-card">
+          <div class="support-card-header">
+            <span class="support-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                 <polyline points="14 2 14 8 20 8"/>
@@ -449,45 +368,73 @@
             </span>
             <div>
               <h3>FlowMint Test Evidence</h3>
-              <p class="product-tagline">Screenshots and reports for QA</p>
+              <p class="support-tagline">Screenshots and reports for QA</p>
             </div>
           </div>
-          <p class="product-desc">Record user actions with screenshots and export test evidence as PDF, HTML, or JSON. Built for QA and documentation — capture evidence without writing code.</p>
-          <ul class="product-features">
-            <li>Screenshot after each action; element highlight</li>
-            <li>Report with all steps and images</li>
-            <li>Export PDF (direct file), HTML, or JSON</li>
-            <li>Save and load sessions with names and tags</li>
-          </ul>
-          <div class="badges">
-            <span class="badge">PDF</span>
-            <span class="badge">Screenshots</span>
-            <span class="badge">QA</span>
-          </div>
+          <p>How to record with screenshots, export PDF, HTML, or JSON, and save/load sessions with names and tags.</p>
           <div class="cta-row">
-            <a href="#" class="cta">Get Test Evidence</a>
-            <a href="FlowMint_Test_Evidence/user-guide.html" class="cta secondary">User Guide</a>
+            <a href="FlowMint_Test_Evidence/user-guide.html" class="cta">Open User Guide</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="about">
-      <p class="section-heading">About</p>
-      <h2>FlowMint</h2>
-      <p>FlowMint builds tools for developers and QA teams. FlowMint Recorder lets you record browser tests and export them to the language and framework you use. FlowMint Test Evidence captures actions with screenshots and exports reports for documentation. All data stays on your device; we don’t collect or transmit your tests.</p>
-      <p>We’re working on more products to help you automate and ship with confidence.</p>
+    <section class="links-section">
+      <p class="section-heading">More resources</p>
+      <h2>Quick links</h2>
+      <div class="links-grid">
+        <a href="payment.html">Upgrade to Pro</a>
+        <a href="payment.html#faq">Payment FAQ</a>
+        <a href="contact.html">Contact us</a>
+        <a href="https://github.com/flowmint/recorder/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
     </section>
 
-    <section class="contact-section" id="contact">
-      <p class="section-heading">Contact</p>
-      <h2>Get in touch</h2>
-      <p>Support, feedback, or partnership inquiries.</p>
-      <ul>
-        <li><strong>Support &amp; feedback</strong> — <a href="https://github.com/flowmint/recorder/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a> for bugs, feature requests, and questions.</li>
-        <li><strong>Documentation</strong> — <a href="support.html">Support &amp; Help</a>, <a href="FlowMint_Recorder/user-guide.html">FlowMint Recorder User Guide</a>, <a href="FlowMint_Test_Evidence/user-guide.html">FlowMint Test Evidence User Guide</a>, <a href="privacy.html">Privacy Policy</a>, <a href="terms.html">Terms of Service</a>.</li>
-        <li><strong>Email</strong> — <a href="#" data-email="general">...</a> for general inquiries.</li>
-      </ul>
+    <section class="support-section">
+      <p class="section-heading">Need help?</p>
+      <h2 class="section-title">Get in touch</h2>
+      <p style="color: var(--text-muted); margin: 0 0 1.5rem;">For bugs, feature requests, or questions, use GitHub Issues. For general inquiries or partnerships, email us.</p>
+      <div class="support-grid">
+        <article class="support-card">
+          <div class="support-card-header">
+            <span class="support-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+            </span>
+            <div>
+              <h3>GitHub Issues</h3>
+              <p class="support-tagline">Bugs, features, questions</p>
+            </div>
+          </div>
+          <p>Open an issue for support, feedback, or to report a problem. We track everything there.</p>
+          <div class="cta-row">
+            <a href="https://github.com/flowmint/recorder/issues" target="_blank" rel="noopener noreferrer" class="cta">Open Issues</a>
+          </div>
+        </article>
+
+        <article class="support-card">
+          <div class="support-card-header">
+            <span class="support-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </span>
+            <div>
+              <h3>Email</h3>
+              <p class="support-tagline">General inquiries</p>
+            </div>
+          </div>
+          <p>Partnerships, licensing, or anything that doesn’t fit a GitHub issue.</p>
+          <div class="cta-row">
+            <a href="contact.html" class="cta secondary">Contact page</a>
+            <a id="support-general-email" href="#" class="cta" data-email="general">...</a>
+          </div>
+        </article>
+      </div>
     </section>
   </div>
 
@@ -496,7 +443,7 @@
       <div class="site-footer-left">
         <span class="logo" aria-hidden="true">
           <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" fill="none">
-            <rect width="128" height="128" rx="24" fill="url(#logo-grad-if)"/>
+            <rect width="128" height="128" rx="24" fill="url(#logo-grad-sf)"/>
             <circle cx="64" cy="64" r="20" fill="white"/>
             <circle cx="64" cy="64" r="32" fill="none" stroke="white" stroke-width="4" opacity="0.9"/>
             <line x1="64" y1="16" x2="64" y2="32" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
@@ -504,7 +451,7 @@
             <line x1="16" y1="64" x2="32" y2="64" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
             <line x1="96" y1="64" x2="112" y2="64" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
             <defs>
-              <linearGradient id="logo-grad-if" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+              <linearGradient id="logo-grad-sf" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
                 <stop stop-color="#0f766e"/>
                 <stop offset="0.5" stop-color="#0d9488"/>
                 <stop offset="1" stop-color="#14b8a6"/>

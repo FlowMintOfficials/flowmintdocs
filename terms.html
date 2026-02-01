@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FlowMint Recorder — Privacy Policy</title>
-  <meta name="description" content="Privacy policy for FlowMint Recorder. No external data collection; all data stored locally in your browser." />
+  <title>Terms of Service — FlowMint</title>
+  <meta name="description" content="Terms of Service for FlowMint products: FlowMint Recorder and FlowMint Test Evidence. Use of our developer tools and services." />
+  <meta name="robots" content="index, follow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -18,6 +19,8 @@
         var href = location.href;
         if (href.indexOf('FlowMint_Recorder/') !== -1)
           base = href.replace(/\/FlowMint_Recorder\/[^/]*$/, '/');
+        else if (href.indexOf('FlowMint_Test_Evidence/') !== -1)
+          base = href.replace(/\/FlowMint_Test_Evidence\/[^/]*$/, '/');
         else
           base = href.replace(/#.*$/, '').replace(/[^/]*$/, '');
       }
@@ -40,7 +43,6 @@
       --text-muted: #94a3b8;
       --accent: #34d1bf;
       --accent-dim: rgba(52, 209, 191, 0.12);
-      --primary: #14b8a6;
       --gradient: linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%);
       --radius: 20px;
       --radius-sm: 12px;
@@ -114,10 +116,7 @@
     @media (max-width: 960px) {
       .layout { grid-template-columns: 1fr; padding: 1.5rem 1rem 3rem; }
     }
-    .toc-wrap {
-      position: sticky;
-      top: 5.5rem;
-    }
+    .toc-wrap { position: sticky; top: 5.5rem; }
     @media (max-width: 960px) {
       .toc-wrap { position: static; margin-bottom: 1.5rem; }
     }
@@ -151,10 +150,7 @@
       text-decoration: none;
       transition: color .2s, background .2s;
     }
-    .toc a:hover {
-      color: var(--accent);
-      background: var(--accent-dim);
-    }
+    .toc a:hover { color: var(--accent); background: var(--accent-dim); }
     .main { min-width: 0; }
 
     .section {
@@ -194,31 +190,12 @@
     }
     .section h3:first-of-type { margin-top: 0; }
     .section p { margin: 0 0 1rem; }
-    .section ul, .section ol {
-      margin: 0 0 1rem;
-      padding-left: 1.5rem;
-    }
+    .section ul, .section ol { margin: 0 0 1rem; padding-left: 1.5rem; }
     .section li { margin-bottom: 0.45rem; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .meta {
-      font-size: 0.9375rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
-
-    .callout {
-      background: var(--accent-dim);
-      border: 1px solid rgba(52, 209, 191, 0.25);
-      border-radius: var(--radius-sm);
-      padding: 1.5rem 1.75rem;
-      margin: 1.5rem 0;
-      font-size: 0.9375rem;
-    }
-    .callout strong { color: var(--accent); }
-    .callout ul { margin: 0.5rem 0 0 1rem; padding-left: 1rem; }
-    .callout li { margin-bottom: 0.35rem; }
+    .meta { font-size: 0.9375rem; color: var(--text-muted); margin-bottom: 2rem; }
 
     .site-footer {
       margin-top: 3rem;
@@ -256,10 +233,10 @@
 <body>
   <header class="site-header" role="banner">
     <div class="site-header-inner">
-      <a href="index.html" aria-label="FlowMint Recorder home">
+      <a href="index.html" aria-label="FlowMint home">
         <span class="logo" aria-hidden="true">
           <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" fill="none">
-            <rect width="128" height="128" rx="24" fill="url(#logo-grad-p)"/>
+            <rect width="128" height="128" rx="24" fill="url(#logo-grad-t)"/>
             <circle cx="64" cy="64" r="20" fill="white"/>
             <circle cx="64" cy="64" r="32" fill="none" stroke="white" stroke-width="4" opacity="0.9"/>
             <line x1="64" y1="16" x2="64" y2="32" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
@@ -267,7 +244,7 @@
             <line x1="16" y1="64" x2="32" y2="64" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
             <line x1="96" y1="64" x2="112" y2="64" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
             <defs>
-              <linearGradient id="logo-grad-p" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+              <linearGradient id="logo-grad-t" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
                 <stop stop-color="#0f766e"/>
                 <stop offset="0.5" stop-color="#0d9488"/>
                 <stop offset="1" stop-color="#14b8a6"/>
@@ -275,7 +252,7 @@
             </defs>
           </svg>
         </span>
-        <span class="brand">FlowMint Recorder <span>— Privacy Policy</span></span>
+        <span class="brand">FlowMint <span>— Terms of Service</span></span>
       </a>
     </div>
   </header>
@@ -285,191 +262,102 @@
       <nav class="toc">
         <p class="toc-title">On this page</p>
         <ul>
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#data-collection">Data collection</a></li>
-          <li><a href="#permissions-explained">Permissions explained</a></li>
-          <li><a href="#no-external-communication">No external communication</a></li>
-          <li><a href="#data-security">Data security</a></li>
-          <li><a href="#your-control">Your control</a></li>
-          <li><a href="#third-party-websites">Third-party websites</a></li>
-          <li><a href="#childrens-privacy">Children's privacy</a></li>
-          <li><a href="#changes-to-this-policy">Changes to this policy</a></li>
-          <li><a href="#open-source">Transparency</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#compliance">Compliance</a></li>
-          <li><a href="#your-rights">Your rights</a></li>
+          <li><a href="terms.html#acceptance">Acceptance</a></li>
+          <li><a href="terms.html#products">Products and services</a></li>
+          <li><a href="terms.html#license">License and use</a></li>
+          <li><a href="terms.html#restrictions">Restrictions</a></li>
+          <li><a href="terms.html#payments">Payments and refunds</a></li>
+          <li><a href="terms.html#privacy">Privacy</a></li>
+          <li><a href="terms.html#disclaimers">Disclaimers</a></li>
+          <li><a href="terms.html#limitation">Limitation of liability</a></li>
+          <li><a href="terms.html#termination">Termination</a></li>
+          <li><a href="terms.html#changes">Changes</a></li>
+          <li><a href="terms.html#governing-law">Governing law</a></li>
+          <li><a href="terms.html#contact">Contact</a></li>
         </ul>
       </nav>
     </aside>
     <main class="main">
-    <p class="meta">Last updated: January 2025</p>
+      <p class="meta">Last updated: February 2025</p>
 
-    <section class="section" id="overview">
-      <h2>Overview</h2>
-      <p>FlowMint Recorder is committed to protecting your privacy. This privacy policy explains how the extension handles data.</p>
-    </section>
+      <section class="section" id="acceptance">
+        <h2>Acceptance of terms</h2>
+        <p>By accessing or using FlowMint’s website, browser extensions (including FlowMint Recorder and FlowMint Test Evidence), or related services (“Services”), you agree to be bound by these Terms of Service. If you do not agree, do not use our Services.</p>
+      </section>
 
-    <section class="section" id="data-collection">
-      <h2>Data collection</h2>
-      <p><strong>FlowMint Recorder does NOT collect, transmit, or store any personal data on external servers.</strong></p>
-      <h3>What data is processed locally</h3>
-      <p>The extension processes the following data <strong>locally on your device only</strong>:</p>
-      <ol>
-        <li><strong>Recorded actions</strong> — User interactions with websites (clicks, typing, navigation)</li>
-        <li><strong>Page elements</strong> — CSS selectors and XPath expressions for elements you interact with</li>
-        <li><strong>Test metadata</strong> — Test names, descriptions, and timestamps</li>
-        <li><strong>URLs</strong> — Website addresses you visit while recording</li>
-      </ol>
-      <h3>Where data is stored</h3>
-      <p>All data is stored <strong>locally</strong> using Chrome’s Storage API:</p>
-      <ul>
-        <li><strong>Location:</strong> Your browser’s local storage</li>
-        <li><strong>Persistence:</strong> Data remains until you clear it or uninstall the extension</li>
-        <li><strong>Access:</strong> Only you can access this data through the extension</li>
-      </ul>
-      <h3>Data you can export</h3>
-      <p>You can export recorded tests as code files in various programming languages. These exports:</p>
-      <ul>
-        <li>Are generated locally in your browser</li>
-        <li>Contain the actions you recorded</li>
-        <li>Are saved to your computer when you download them</li>
-        <li>Are <strong>never sent to any external server</strong></li>
-      </ul>
-    </section>
+      <section class="section" id="products">
+        <h2>Products and services</h2>
+        <p>FlowMint provides:</p>
+        <ul>
+          <li><strong>FlowMint Recorder</strong> — A browser extension to record browser tests and export them to code (Playwright, Python, Java, C#, Ruby).</li>
+          <li><strong>FlowMint Test Evidence</strong> — A browser extension to record user actions with screenshots and export reports (PDF, HTML, JSON).</li>
+          <li><strong>Pro plans</strong> — Paid plans that unlock additional features. Payment and license terms are described on the <a href="payment.html">payment page</a>.</li>
+        </ul>
+      </section>
 
-    <section class="section" id="permissions-explained">
-      <h2>Permissions explained</h2>
-      <p>The extension requests the following permissions:</p>
-      <h3>storage</h3>
-      <p><strong>Purpose:</strong> Save recorded tests locally. <strong>Scope:</strong> Local browser storage only. <strong>Data:</strong> Test data, actions, and preferences.</p>
-      <h3>activeTab</h3>
-      <p><strong>Purpose:</strong> Record actions on the currently active tab. <strong>Scope:</strong> Only tabs where recording is active. <strong>Data:</strong> DOM element information and user interactions.</p>
-      <h3>scripting</h3>
-      <p><strong>Purpose:</strong> Inject content scripts to capture user actions. <strong>Scope:</strong> All URLs (to work on any website). <strong>Data:</strong> User interactions with page elements.</p>
-      <h3>sidePanel</h3>
-      <p><strong>Purpose:</strong> Display the recording interface. <strong>Scope:</strong> Extension UI only. <strong>Data:</strong> UI state and preferences.</p>
-      <h3>tabs</h3>
-      <p><strong>Purpose:</strong> Manage recording across tabs. <strong>Scope:</strong> Tab metadata (URL, title). <strong>Data:</strong> Active tab information during recording.</p>
-      <h3>&lt;all_urls&gt;</h3>
-      <p><strong>Purpose:</strong> Allow recording on any website. <strong>Scope:</strong> Websites you choose to record on. <strong>Data:</strong> Actions performed on those websites.</p>
-    </section>
+      <section class="section" id="license">
+        <h2>License and use</h2>
+        <p>Subject to these terms, we grant you a limited, non-exclusive, non-transferable license to use our Services for your personal or internal business use. You may not sublicense, resell, or redistribute our software or services without our written permission.</p>
+        <h3>Free and Pro</h3>
+        <p>Free versions of our extensions are available with limited features. Pro features require a valid license obtained through our payment process. License keys are for the purchaser’s use; sharing or redistributing license keys may result in termination.</p>
+      </section>
 
-    <section class="section" id="no-external-communication">
-      <h2>No external communication</h2>
-      <p>FlowMint Recorder:</p>
-      <ul>
-        <li>Does NOT send data to any external servers</li>
-        <li>Does NOT use analytics or tracking</li>
-        <li>Does NOT share data with third parties</li>
-        <li>Does NOT require user accounts or login</li>
-        <li>Does NOT collect personally identifiable information (PII)</li>
-      </ul>
-    </section>
+      <section class="section" id="restrictions">
+        <h2>Restrictions</h2>
+        <p>You agree not to:</p>
+        <ul>
+          <li>Use the Services for any illegal purpose or in violation of any laws.</li>
+          <li>Reverse engineer, decompile, or disassemble our software except as permitted by law.</li>
+          <li>Remove or alter any copyright, trademark, or other proprietary notices.</li>
+          <li>Use the Services to harm, harass, or infringe the rights of others.</li>
+          <li>Circumvent license or payment mechanisms or share license keys improperly.</li>
+        </ul>
+      </section>
 
-    <section class="section" id="data-security">
-      <h2>Data security</h2>
-      <ul>
-        <li>All data is stored locally in your browser’s secure storage</li>
-        <li>Data is only accessible by the extension</li>
-        <li>Data is deleted when you uninstall the extension or clear browser data</li>
-      </ul>
-    </section>
+      <section class="section" id="payments">
+        <h2>Payments and refunds</h2>
+        <p>Payments for Pro plans are processed as described on our <a href="payment.html">payment page</a>. Prices are in the currency shown (e.g. INR). Refund requests are handled on a case-by-case basis; contact us at the email provided on the <a href="contact.html">contact page</a>.</p>
+      </section>
 
-    <section class="section" id="your-control">
-      <h2>Your control</h2>
-      <p>You have complete control over your data:</p>
-      <h3>Viewing data</h3>
-      <p>Open the side panel to see all recorded actions.</p>
-      <h3>Deleting data</h3>
-      <ul>
-        <li>Delete individual actions using the delete button</li>
-        <li>Clear all actions using the Clear button</li>
-        <li>Uninstall the extension to remove all data</li>
-      </ul>
-      <h3>Exporting data</h3>
-      <p>Export tests to code files that you control.</p>
-    </section>
+      <section class="section" id="privacy">
+        <h2>Privacy</h2>
+        <p>Your use of the Services is also governed by our <a href="privacy.html">Privacy Policy</a>. We do not collect or transmit your recorded tests or evidence to our servers; data stays on your device unless you choose to export or share it.</p>
+      </section>
 
-    <section class="section" id="third-party-websites">
-      <h2>Third-party websites</h2>
-      <p>When you use FlowMint Recorder on websites:</p>
-      <ul>
-        <li>The extension interacts with the page’s DOM</li>
-        <li>The extension does not modify website functionality</li>
-        <li>The extension respects website security policies</li>
-        <li>Website privacy policies still apply</li>
-      </ul>
-    </section>
+      <section class="section" id="disclaimers">
+        <h2>Disclaimers</h2>
+        <p>The Services are provided “as is” and “as available.” We do not warrant that the Services will be uninterrupted, error-free, or fit for any particular purpose. You use the Services at your own risk. We are not responsible for any damage or loss arising from your use of recorded tests or exported code in your environment.</p>
+      </section>
 
-    <section class="section" id="childrens-privacy">
-      <h2>Children’s privacy</h2>
-      <p>FlowMint Recorder does not knowingly collect data from children under 13. The extension is designed for developers and testers.</p>
-    </section>
+      <section class="section" id="limitation">
+        <h2>Limitation of liability</h2>
+        <p>To the maximum extent permitted by law, FlowMint and its affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits, data, or goodwill, arising from your use of the Services. Our total liability shall not exceed the amount you paid us in the twelve (12) months preceding the claim.</p>
+      </section>
 
-    <section class="section" id="changes-to-this-policy">
-      <h2>Changes to this policy</h2>
-      <p>We may update this privacy policy. Changes will be reflected in:</p>
-      <ul>
-        <li>The “Last updated” date at the top of this page</li>
-        <li>Extension store listing</li>
-        <li>GitHub repository</li>
-      </ul>
-    </section>
+      <section class="section" id="termination">
+        <h2>Termination</h2>
+        <p>We may suspend or terminate your access to the Services if you breach these terms. You may stop using the Services at any time. Upon termination, your license to use Pro features ceases; the free version may remain usable subject to these terms.</p>
+      </section>
 
-    <section class="section" id="open-source">
-      <h2>Transparency</h2>
-      <p>FlowMint Recorder is a FlowMint product. You can:</p>
-      <ul>
-        <li>Review the code on GitHub</li>
-        <li>Verify no external data transmission</li>
-        <li>Report privacy concerns</li>
-      </ul>
-    </section>
+      <section class="section" id="changes">
+        <h2>Changes to these terms</h2>
+        <p>We may update these Terms of Service. We will indicate the “Last updated” date at the top of this page. Continued use of the Services after changes constitutes acceptance of the updated terms. Material changes may also be communicated via our website or extension store listings.</p>
+      </section>
 
-    <section class="section" id="contact">
-      <h2>Contact</h2>
-      <p>For privacy questions or concerns:</p>
-      <ul>
-        <li>Open an issue on <a href="https://github.com/FlowMint/Record_Project">GitHub</a></li>
-        <li>Email: <a href="#" data-email="privacy">...</a></li>
-      </ul>
-    </section>
+      <section class="section" id="governing-law">
+        <h2>Governing law</h2>
+        <p>These terms are governed by the laws of India. Any disputes shall be subject to the exclusive jurisdiction of the courts of India.</p>
+      </section>
 
-    <section class="section" id="compliance">
-      <h2>Compliance</h2>
-      <p>FlowMint Recorder complies with:</p>
-      <ul>
-        <li>Chrome Web Store Developer Program Policies</li>
-        <li>Firefox Add-on Policies</li>
-        <li>Edge Add-ons Policies</li>
-        <li>General Data Protection Regulation (GDPR) principles</li>
-        <li>California Consumer Privacy Act (CCPA) principles</li>
-      </ul>
-    </section>
-
-    <section class="section" id="your-rights">
-      <h2>Your rights</h2>
-      <p>Under privacy regulations, you have the right to:</p>
-      <ul>
-        <li><strong>Access</strong> your data (view in extension)</li>
-        <li><strong>Delete</strong> your data (clear actions or uninstall)</li>
-        <li><strong>Export</strong> your data (download as code files)</li>
-        <li><strong>Object</strong> to processing (don’t use the extension)</li>
-      </ul>
-    </section>
-
-    <div class="callout">
-      <strong>Summary</strong>
-      <p style="margin: 0.5rem 0 0 0;">FlowMint Recorder is completely private:</p>
-      <ul>
-        <li>All data stored locally</li>
-        <li>No external servers</li>
-        <li>No tracking or analytics</li>
-        <li>Full user control</li>
-        <li>Source available for review</li>
-      </ul>
-      <p style="margin: 0.75rem 0 0 0;">Your recorded tests never leave your computer unless you explicitly export and share them.</p>
-    </div>
+      <section class="section" id="contact">
+        <h2>Contact</h2>
+        <p>For questions about these terms:</p>
+        <ul>
+          <li><a href="contact.html">Contact page</a></li>
+          <li>Email: <a href="#" data-email="general">...</a></li>
+          <li><a href="https://github.com/flowmint/recorder/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a> for support and feedback</li>
+        </ul>
+      </section>
     </main>
   </div>
 
@@ -478,7 +366,7 @@
       <div class="site-footer-left">
         <span class="logo" aria-hidden="true">
           <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" fill="none">
-            <rect width="128" height="128" rx="24" fill="url(#logo-grad-pf)"/>
+            <rect width="128" height="128" rx="24" fill="url(#logo-grad-tf)"/>
             <circle cx="64" cy="64" r="20" fill="white"/>
             <circle cx="64" cy="64" r="32" fill="none" stroke="white" stroke-width="4" opacity="0.9"/>
             <line x1="64" y1="16" x2="64" y2="32" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
@@ -486,7 +374,7 @@
             <line x1="16" y1="64" x2="32" y2="64" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
             <line x1="96" y1="64" x2="112" y2="64" stroke="white" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
             <defs>
-              <linearGradient id="logo-grad-pf" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+              <linearGradient id="logo-grad-tf" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
                 <stop stop-color="#0f766e"/>
                 <stop offset="0.5" stop-color="#0d9488"/>
                 <stop offset="1" stop-color="#14b8a6"/>
@@ -501,7 +389,7 @@
         <a href="index.html#products">Products</a><span class="sep">·</span>
         <a href="support.html">Support</a><span class="sep">·</span>
         <a href="payment.html">Upgrade</a><span class="sep">·</span>
-        <a href="privacy.html" aria-current="page">Privacy</a><span class="sep">·</span>
+        <a href="privacy.html">Privacy</a><span class="sep">·</span>
         <a href="terms.html">Terms</a><span class="sep">·</span>
         <a href="contact.html">Contact</a>
       </nav>
